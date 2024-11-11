@@ -1,8 +1,12 @@
-from flask import Flask, request, send_file
+from flask import Flask, request, send_file, jsonify
 from gtts import gTTS
 import os
 
 app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return jsonify({"message": "Welcome to the Text-to-Speech API!"})
 
 @app.route('/tts', methods=['POST'])
 def text_to_speech():
